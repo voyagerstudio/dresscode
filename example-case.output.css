@@ -1,1 +1,96 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
+[class^="mode\~"]:not([class*="\:"]),
+.mode {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+}
+
+[class*="mode\~day"]:not([class*="\:"]),
+.mode\~day {
+  background-color: papayawhip;
+}
+
+[class*="mode\~night"]:not([class*="\:"]),
+.mode\~night {
+  background-color: black;
+}
+
+[class^="site-header\~"]:not([class*="\:"]),
+.site-header {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+[class*="site-header\~night"]:not([class*="\:"]),
+.site-header\~night {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+[class^="site-header\:logo\~"],
+.site-header\:logo {
+  font-size: 18px;
+  font-weight: normal;
+}
+[class^="site-header\:logo\~"] a,
+.site-header\:logo a {
+  text-decoration: none;
+  color: red;
+}
+
+[class^="parent-name\~night\:logo\~"],
+.site-header\~night\:logo {
+  font-size: 18px;
+  font-weight: normal;
+}
+[class^="parent-name\~night\:logo\~"] a,
+.site-header\~night\:logo a {
+  text-decoration: none;
+  color: white;
+}
+
+[class^="nav\:list\~"],
+.nav\:list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+[class^="nav\:list-item\~"],
+.nav\:list-item {
+  display: inline-block;
+}
+[class^="nav\:list-item\~"] + [class^="nav\:list-item\~"],
+.nav\:list-item + [class^="nav\:list-item\~"], [class^="nav\:list-item\~"] +
+.nav\:list-item,
+.nav\:list-item +
+.nav\:list-item {
+  margin-left: 40px;
+}
+
+[class^="nav\:link\~"],
+.nav\:link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+[class^="nav\:link\~"]:hover, [class^="nav\:link\~"]:focus,
+.nav\:link:hover,
+.nav\:link:focus {
+  color: black;
+}
+
+.nav\:link\~night {
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav\:link\~night:hover, .nav\:link\~night:focus {
+  color: white;
+}
