@@ -1,1 +1,35 @@
- 
+// Should apply to all variants sharing the same parent name
+// Specificity should be 0010
+// output: `.parent-name`
+@mixin parent($parent-name) {
+  [class^="#{$parent-name}\~"]:not([class*="\:"]),
+  .#{$parent-name} {
+    @content;
+  }
+}
+
+// should inherit styles from non-variable parent of same name
+// specificy should be 0010
+// output: `.parent-name~variant-name`
+@mixin parent-variant($parent-name, $variant-name) {
+  .#{$parent-name}\~#{$variant-name} {
+    @content;
+  }
+}
+
+
+// variants of this child should inherit styles from here
+// specificity should be 0020 (or should it be 0010 also for easier cascade manipulation?)
+// output: `.parent:child`, `.parent~variant:child`
+@mixin child($parent-name, $child, $has-parent-variant: 'false', $parent-variant:null) {
+  // any selector with matching parent and child name (including child variants)
+  [class*="#{$parent-name}\:"][class*="#{$child}\~"],
+  // any selector with matching parent (including parent variants) and child name (including child variants)
+  [class*="#{$parent-name}\~"][class*="#{$child}\~"],
+  [class^="#{$parent-name}\:#{$child}\~"],
+  .#{$parent-name} .#{$parent-name}\:#{$child},
+  .#{$parent-name}\:#{$child} {
+    @content;
+  }
+}
+
