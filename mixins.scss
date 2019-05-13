@@ -12,24 +12,40 @@
 // specificy should be 0010
 // output: `.parent-name~variant-name`
 @mixin parent-variant($parent-name, $variant-name) {
+  [class*="#{$parent-name}\~#{$variant-name}"]:not([class*="\:"]),
   .#{$parent-name}\~#{$variant-name} {
     @content;
   }
 }
 
-
 // variants of this child should inherit styles from here
-// specificity should be 0020 (or should it be 0010 also for easier cascade manipulation?)
+// specificity should be 0010
 // output: `.parent:child`, `.parent~variant:child`
-@mixin child($parent-name, $child, $has-parent-variant: 'false', $parent-variant:null) {
-  // any selector with matching parent and child name (including child variants)
-  [class*="#{$parent-name}\:"][class*="#{$child}\~"],
-  // any selector with matching parent (including parent variants) and child name (including child variants)
-  [class*="#{$parent-name}\~"][class*="#{$child}\~"],
-  [class^="#{$parent-name}\:#{$child}\~"],
-  .#{$parent-name} .#{$parent-name}\:#{$child},
-  .#{$parent-name}\:#{$child} {
-    @content;
+@mixin child($parent-name, $child-name, $has-parent-variant: 'false', $parent-variant:null) {  
+  @if $has-parent-variant == 'false' {
+    [class^="#{$parent-name}\:#{$child-name}\~"],
+    .#{$parent-name}\:#{$child-name} {
+      @content;
+    }
+  }
+  @if $has-parent-variant == 'true' {
+    [class^="#{parent-name}\~#{$parent-variant}\:#{$child-name}\~"],
+    .#{$parent-name}\~#{$parent-variant}\:#{$child-name} {
+      @content;
+    }
   }
 }
 
+@mixin child-variant($parent-name, $child-name, $variant-name, $has-parent-variant: 'false', $parent-variant:null) {
+  @if $has-parent-variant == 'false' {
+    .#{$parent-name}\:#{$child-name}\~#{$variant-name} {
+      @content;
+    }
+  }
+  
+  @if $has-parent-variant == 'true' {
+    .#{$parent-name}\~#{$parent-variant}\:#{$child-name}\~#{$variant-name} {
+      @content;
+    }
+  }
+}
