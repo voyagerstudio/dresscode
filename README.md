@@ -1,4 +1,4 @@
-# Dress-code
+# Dresscode
 An experimental (meaning: do _not_ use this) mixin-supported alternative to the BEM naming convention.
 
 Use Case:
@@ -10,7 +10,7 @@ turns typical BEM classes like this:
 
 into this:
 ```html
-<!-- Dress Code -->
+<!-- Dresscode -->
 <div class="header~signed-out:logo~dark-mode">
 ```
 
