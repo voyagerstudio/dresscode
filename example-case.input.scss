@@ -1,1 +1,95 @@
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+@include parent(mode) {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+}
+
+@include parent-variant(mode, day) {
+  background-color: papayawhip;
+}
+
+@include parent-variant(mode, night) {
+  background-color: black;
+}
+
+@include parent(site-header) {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+@include parent-variant(site-header, night) {
+  background-color: rgba(white, 0.2);
+}
+
+@include child(site-header, logo) {
+  font-size: 18px;
+  font-weight: normal;
+  
+  a {
+    text-decoration: none;
+    color: red;
+  }
+}
+
+@include child(site-header, logo, 'true', night) {
+  font-size: 18px;
+  font-weight: normal;
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+@include parent-variant(nav, site-header) {
+  
+}
+
+@include child(nav, list) {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+@include child(nav, list-item) {
+  display: inline-block;
+  
+  & + & {
+    margin-left: 40px;
+  }
+}
+
+@include child-variant(nav, list-item, night) {
+  
+}
+
+@include child(nav, link) {
+  text-decoration: none;
+  color: rgba(black, 0.5);
+  
+  &:hover,
+  &:focus {
+    color: rgba(black, 1);
+  }
+}
+
+@include child-variant(nav, link, night) {
+  color: rgba(white, 0.5);
+  
+  &:hover,
+  &:focus {
+    color: rgba(white, 1);
+  }
+}
+
