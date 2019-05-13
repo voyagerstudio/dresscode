@@ -1,6 +1,11 @@
 # Dresscode
 An experimental (meaning: do _not_ use this) mixin-supported alternative to the BEM naming convention.
 
+
+![Gif of Jeff Goldblum in Jurrassic Park with the quote "Your scientists were so preoccupied with whether or not they could, they never stopped to think if they should"](https://media.giphy.com/media/mCClSS6xbi8us/giphy.gif)
+
+---
+
 Use Case:
 turns typical BEM classes like this:
 ```html
@@ -21,3 +26,4 @@ examples:
 * `<div class="parent~variant:child">`
 * `<div class="parent:child~variant">`
 * `<div class="parent~variant:child~variant">`
+
